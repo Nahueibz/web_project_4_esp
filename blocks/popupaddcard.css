@@ -1,0 +1,54 @@
+.popup__addcard{
+    width: 100%;
+    z-index: 0;
+    display: none;
+}
+.popup__opened{
+    display: block;
+}
+.popup__container-addcard{
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 425px;
+    margin-top: 195px;
+}
+.popup__title{
+    font-family: Inter, sans-serif, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: normal;
+    line-height: normal;
+    color: black;
+    align-self: flex-start;
+    padding-left: 36px;
+}
+.control__form{
+    width: 78%;
+    padding: 10px;
+}
+.control__button{
+    width: 85%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-family: inter, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+.popup__image1{
+    position: absolute;
+    right: -33px;
+    top: -35px;
+}
