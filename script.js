@@ -1,5 +1,5 @@
 // // Busquemos el formulario en el DOM
-// let formElement = document.querySelector(.popup__container);
+let formElement = document.querySelector(".popup__container");
 // console.log(formElement); 
 
 
@@ -9,10 +9,7 @@
 
 // // Observa que el nombre de la función comienza con un verbo
 // // y describe exactamente lo que hace la función
-// function handleProfileFormSubmit(evt) {
-//     // Esta línea impide que el navegador
-//     // entregue el formulario en su forma predeterminada.
-//     evt.preventDefault();
+// 
 //     // Una vez hecho esto, podemos definir nuestra propia forma de entregar el formulario.
 //     // Lo explicaremos todo con más detalle después.
 
@@ -30,39 +27,81 @@
 
 // // Conecta el manipulador (handler) al formulario:
 // // se observará el evento de entrega
-// formElement.addEventListener('submit', handleProfileFormSubmit);
-let containerPopup = document.querySelector(".popup");
+// 
+let popup = document.querySelector(".popup");
+let containerPopup = document.querySelector(".popup__container");
 let openProfileButton = document.querySelector(".profile__bottom");
-let closeProfileButton = document.querySelector(".popup__image"); // PREGUNTAR SOBRE querySelectorAll
+let closeProfileButton = document.querySelector(".popup__image"); 
 let likeButton = document.querySelector(".card__like");
 let containerPopupCard = document.querySelector(".popup__addcard")
 let openCardPopup = document.querySelector(".profile__bottom-add");
 let closePopupCard = document.querySelector(".popup__image1");
+let changeNameProfile = document.querySelector(".control__form");
+let nameInput = document.querySelector(".control__form");
+let jobInput = document.querySelector(".control__form1");
+let submitButton = document.querySelector(".control__button");
+let titleProfile = document.querySelector(".profile__title");
+let subtitleProfile = document.querySelector(".profile__subtitle");
+let cardsContent = document.querySelector(".card");
+let trashButton = document.querySelector(".card__trash-image");
 
 
-
+function deleteCard(){
+    cardsContent.classList.remove("card");
+}
 function openPopup(){
-    containerPopup.classList.add("popup__opened");    
+    popup.classList.add("popup__opened");    
 };
 function closePopup(){
-    containerPopup.classList.remove("popup__opened");
+    popup.classList.remove("popup__opened");
 };
-function likeDark(){
-    likeButton.classList.toggle("card__like-dark")
-};
+// function likeDark(evt){
+//     evt.target.likeButton.classList.toggle("card__like-dark");
+    
+// };
 function openPopupCard(){
     containerPopupCard.classList.add("popup__opened")
 };
 function closePopupTarget(){
     containerPopupCard.classList.remove("popup__opened")
 };
+function submitButtonFunction(evt){
+    evt.preventDefault();
+    titleProfile.textContent = nameInput.value;
+    subtitleProfile.textContent = jobInput.value;
+    closePopup();
+}
 
-
+trashButton.addEventListener("click", deleteCard);
+containerPopup.addEventListener("submit", submitButtonFunction);
 openProfileButton.addEventListener("click", openPopup);
 closeProfileButton.addEventListener("click", closePopup);
-likeButton.addEventListener("click", likeDark);
+likeButton.addEventListener("click", (evt)=> {
+    evt.target.classList.toggle("card__like-dark");
+});
 openCardPopup.addEventListener("click", openPopupCard);
 closePopupCard.addEventListener("click", closePopupTarget);
+
+
+
+
+
+
+
+// function handleProfileFormSubmit(evt) {
+//      evt.preventDefault();
+//     nameInput.textContent = "Nahuel";
+//      jobInput.textContent = "Desarrollador web";
+//   };
+// function submitButtonText(){
+//     nameInput.textContent = "";
+//     jobInput.textContent = "";
+// }   
+
+
+
+// formElement.addEventListener('submit', handleProfileFormSubmit);
+// submitButton.addEventListener('submit', submitButtonText);
 
 
 /* script.js */
