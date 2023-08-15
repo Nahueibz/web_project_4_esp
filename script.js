@@ -1,38 +1,7 @@
-// // Busquemos el formulario en el DOM
-let formElement = document.querySelector(".popup__container");
-// console.log(formElement); 
-
-
-
-// // Lo siguiente es el manipulador (handler) de entrega de formularios, aunque
-// // no se enviará en ningún sitio todavía
-
-// // Observa que el nombre de la función comienza con un verbo
-// // y describe exactamente lo que hace la función
-// 
-//     // Una vez hecho esto, podemos definir nuestra propia forma de entregar el formulario.
-//     // Lo explicaremos todo con más detalle después.
-
-//     // Busquemos los campos del formulario en el DOM
-//     let nameInput = // Use querySelector()
-//     let jobInput = // Use querySelector()
-
-//     // Obtén los valores de cada campo desde la propiedad de valor correspondiente
-
-//     // Selecciona los elementos donde se introducirán los valores de los campos
-
-//     // Inserta nuevos valores utilizando el textContent
-//     // propiedad del método querySelector()
-// }
-
-// // Conecta el manipulador (handler) al formulario:
-// // se observará el evento de entrega
-// 
 let popup = document.querySelector(".popup");
 let containerPopup = document.querySelector(".popup__container");
 let openProfileButton = document.querySelector(".profile__bottom");
 let closeProfileButton = document.querySelector(".popup__image"); 
-let likeButton = document.querySelector(".card__like");
 let containerPopupCard = document.querySelector(".popup__addcard")
 let openCardPopup = document.querySelector(".profile__bottom-add");
 let closePopupCard = document.querySelector(".popup__image1");
@@ -43,27 +12,34 @@ let submitButton = document.querySelector(".control__button");
 let titleProfile = document.querySelector(".profile__title");
 let subtitleProfile = document.querySelector(".profile__subtitle");
 let cardsContent = document.querySelector(".card");
-let trashButton = document.querySelector(".card__trash-image");
+let trashButtons = document.querySelectorAll(".card__trash-image");
+let likeButtons = document.querySelectorAll(".card__like");
+let containerCards = document.querySelector(".cards");
+let imageCardContent = document.querySelector(".card__image");
+let titleCardContent = document.querySelector(".card__text");
+let nameCardInput = document.querySelector(".control__form-card");
+let imageCardInput = document.querySelector(".control__form-card1");
+let controlButtonCard = document.querySelector(".control__button-card");
 
-
-function deleteCard(){
-    cardsContent.classList.remove("card");
+// function closePopupCardFunc(){
+//     closePopup();
+// }
+controlButtonCard.addEventListener("click", closePopup);
+function deleteCard(evt){
+    evt.target.closest(".card").remove();
 }
+
 function openPopup(){
     popup.classList.add("popup__opened");    
 };
 function closePopup(){
     popup.classList.remove("popup__opened");
 };
-// function likeDark(evt){
-//     evt.target.likeButton.classList.toggle("card__like-dark");
-    
-// };
 function openPopupCard(){
     containerPopupCard.classList.add("popup__opened")
 };
 function closePopupTarget(){
-    containerPopupCard.classList.remove("popup__opened")
+    containerPopupCard.classList.remove("popup__opened");
 };
 function submitButtonFunction(evt){
     evt.preventDefault();
@@ -71,50 +47,42 @@ function submitButtonFunction(evt){
     subtitleProfile.textContent = jobInput.value;
     closePopup();
 }
+function likeDark(evt) {
+    evt.target.classList.toggle("card__like-dark");
+}
 
-trashButton.addEventListener("click", deleteCard);
+likeButtons.forEach(function(likeButton) {
+    likeButton.addEventListener("click", likeDark);
+});
+trashButtons.forEach(function(trashButton){
+    trashButton.addEventListener("click", deleteCard);
+});
+
+function addCard(evt){
+    evt.preventDefault();
+    containerCards.insertAdjacentHTML("beforeend",  `<div class="card">
+    <img class="card__image" src="${imageCardInput.value}" alt="Valle de Yosemite">
+    <img class="card__trash-image" src="images/Trash.png" alt="Imagen tacho de basura">
+    <div class="card__info">
+    <h3 class="card__text">${nameCardInput.value}</h3>
+    <div class="card__like"></div>
+    </div></div>`)
+    let newCard = containerCards.lastElementChild;
+    let trashButton = newCard.querySelector(".card__trash-image");
+    trashButton.addEventListener("click", deleteCard);
+
+    let likeButtons = newCard.querySelector(".card__like");
+    likeButtons = newCard.addEventListener("click", likeDark);
+
+    }
+imageCardContent.value = "";
+titleCardContent.value = "";
+
+
+controlButtonCard.addEventListener("click", addCard);
 containerPopup.addEventListener("submit", submitButtonFunction);
 openProfileButton.addEventListener("click", openPopup);
 closeProfileButton.addEventListener("click", closePopup);
-likeButton.addEventListener("click", (evt)=> {
-    evt.target.classList.toggle("card__like-dark");
-});
 openCardPopup.addEventListener("click", openPopupCard);
 closePopupCard.addEventListener("click", closePopupTarget);
 
-
-
-
-
-
-
-// function handleProfileFormSubmit(evt) {
-//      evt.preventDefault();
-//     nameInput.textContent = "Nahuel";
-//      jobInput.textContent = "Desarrollador web";
-//   };
-// function submitButtonText(){
-//     nameInput.textContent = "";
-//     jobInput.textContent = "";
-// }   
-
-
-
-// formElement.addEventListener('submit', handleProfileFormSubmit);
-// submitButton.addEventListener('submit', submitButtonText);
-
-
-/* script.js */
-
-// let container = document.querySelector("#container");
-// let content = container.querySelector(".content");
-// let contentItem = content.querySelector(".content__item");
-
-// console.log(contentItem); // Registrará: <div class="content__item"></div>
-
-// let contentItems = content.querySelectorAll(".content__item");
-
-// console.log(contentItems); /* Registrará todos los elementos con la clase .content__item */
-// let container = document.querySelector(".cards");
-// let content = container.querySelector(".card");
-// let contentItem = content.querySelector(".card__like");

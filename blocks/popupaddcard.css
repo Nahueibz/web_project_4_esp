@@ -34,11 +34,15 @@
     align-self: flex-start;
     padding-left: 36px;
 }
-.control__form{
+.control__form-card{
     width: 78%;
     padding: 10px;
 }
-.control__button{
+.control__form-card1{
+    width: 78%;
+    padding: 10px;
+}
+.control__button-card{
     width: 85%;
     padding: 15px;
     background-color: black;
