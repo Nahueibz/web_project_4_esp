@@ -1,30 +1,26 @@
-let popup = document.querySelector(".popup");
-let containerPopup = document.querySelector(".popup__container");
-let openProfileButton = document.querySelector(".profile__bottom");
-let closeProfileButton = document.querySelector(".popup__image"); 
-let containerPopupCard = document.querySelector(".popup__addcard")
-let openCardPopup = document.querySelector(".profile__bottom-add");
-let closePopupCard = document.querySelector(".popup__image1");
-let changeNameProfile = document.querySelector(".control__form");
-let nameInput = document.querySelector(".control__form");
-let jobInput = document.querySelector(".control__form1");
-let submitButton = document.querySelector(".control__button");
-let titleProfile = document.querySelector(".profile__title");
-let subtitleProfile = document.querySelector(".profile__subtitle");
-let cardsContent = document.querySelector(".card");
-let trashButtons = document.querySelectorAll(".card__trash-image");
-let likeButtons = document.querySelectorAll(".card__like");
-let containerCards = document.querySelector(".cards");
-let imageCardContent = document.querySelector(".card__image");
-let titleCardContent = document.querySelector(".card__text");
-let nameCardInput = document.querySelector(".control__form-card");
-let imageCardInput = document.querySelector(".control__form-card1");
-let controlButtonCard = document.querySelector(".control__button-card");
+const popup = document.querySelector(".popup");
+const containerPopup = document.querySelector(".popup__container");
+const openProfileButton = document.querySelector(".profile__bottom");
+const closeProfileButton = document.querySelector(".popup__image"); 
+const nameInput = document.querySelector(".control__form");
+const jobInput = document.querySelector(".control__form1");
+const titleProfile = document.querySelector(".profile__title");
+const subtitleProfile = document.querySelector(".profile__subtitle");
 
-// function closePopupCardFunc(){
-//     closePopup();
-// }
-controlButtonCard.addEventListener("click", closePopup);
+
+const containerPopupCard = document.querySelector(".popup__addcard");
+const closePopupCard = document.querySelector(".popup__image1");
+const openCardPopup = document.querySelector(".profile__bottom-add");
+const cardsContent = document.querySelector(".card");
+const trashButtons = document.querySelectorAll(".card__trash-image");
+const likeButtons = document.querySelectorAll(".card__like");
+const containerCards = document.querySelector(".cards");
+const imageCardContent = document.querySelector(".card__image");
+const titleCardContent = document.querySelector(".card__text");
+const nameCardInput = document.querySelector(".control__form-card");
+const imageCardInput = document.querySelector(".control__form-card1");
+const controlButtonCard = document.querySelector(".control__button-card");
+
 function deleteCard(evt){
     evt.target.closest(".card").remove();
 }
@@ -47,12 +43,12 @@ function submitButtonFunction(evt){
     subtitleProfile.textContent = jobInput.value;
     closePopup();
 }
-function likeDark(evt) {
+function toggleLikeStatus(evt) {
     evt.target.classList.toggle("card__like-dark");
 }
 
 likeButtons.forEach(function(likeButton) {
-    likeButton.addEventListener("click", likeDark);
+    likeButton.addEventListener("click", toggleLikeStatus);
 });
 trashButtons.forEach(function(trashButton){
     trashButton.addEventListener("click", deleteCard);
@@ -73,13 +69,12 @@ function addCard(evt){
 
     let likeButtons = newCard.querySelector(".card__like");
     likeButtons = newCard.addEventListener("click", likeDark);
-
     }
 imageCardContent.value = "";
 titleCardContent.value = "";
 
 
-controlButtonCard.addEventListener("click", addCard);
+controlButtonCard.addEventListener("click", addCard, closePopupTarget);
 containerPopup.addEventListener("submit", submitButtonFunction);
 openProfileButton.addEventListener("click", openPopup);
 closeProfileButton.addEventListener("click", closePopup);
