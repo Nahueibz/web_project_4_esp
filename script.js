@@ -14,6 +14,8 @@ const openCardPopup = document.querySelector(".profile__bottom-add");
 const cardsContent = document.querySelector(".card");
 const trashButtons = document.querySelectorAll(".card__trash-image");
 const likeButtons = document.querySelectorAll(".card__like");
+
+
 const containerCards = document.querySelector(".cards");
 const imageCardContent = document.querySelector(".card__image");
 const titleCardContent = document.querySelector(".card__text");
@@ -21,22 +23,25 @@ const nameCardInput = document.querySelector(".control__form-card");
 const imageCardInput = document.querySelector(".control__form-card1");
 const controlButtonCard = document.querySelector(".control__button-card");
 
+
+
 function deleteCard(evt){
     evt.target.closest(".card").remove();
 }
 
 function openPopup(){
-    popup.classList.add("popup__opened");    
+    popup.classList.add("popup__opened");  
 };
 function closePopup(){
     popup.classList.remove("popup__opened");
+    
 };
-function openPopupCard(){
-    containerPopupCard.classList.add("popup__opened")
-};
-function closePopupTarget(){
+function deletePopupCard(){
     containerPopupCard.classList.remove("popup__opened");
-};
+}
+function openPopupCard(){
+    containerPopupCard.classList.add("popup__opened");  
+}
 function submitButtonFunction(evt){
     evt.preventDefault();
     titleProfile.textContent = nameInput.value;
@@ -68,16 +73,17 @@ function addCard(evt){
     trashButton.addEventListener("click", deleteCard);
 
     let likeButtons = newCard.querySelector(".card__like");
-    likeButtons = newCard.addEventListener("click", likeDark);
+    likeButtons = newCard.addEventListener("click", toggleLikeStatus);
+    deletePopupCard();
     }
 imageCardContent.value = "";
 titleCardContent.value = "";
 
 
-controlButtonCard.addEventListener("click", addCard, closePopupTarget);
+controlButtonCard.addEventListener("click", addCard);
 containerPopup.addEventListener("submit", submitButtonFunction);
 openProfileButton.addEventListener("click", openPopup);
 closeProfileButton.addEventListener("click", closePopup);
 openCardPopup.addEventListener("click", openPopupCard);
-closePopupCard.addEventListener("click", closePopupTarget);
+closePopupCard.addEventListener("click", deletePopupCard);
 
