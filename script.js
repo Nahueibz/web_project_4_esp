@@ -40,6 +40,7 @@ function submitButtonFunction(evt){
     evt.preventDefault();
     titleProfile.textContent = nameInput.value;
     subtitleProfile.textContent = jobInput.value;
+    closePopup(popup);
 }
 function toggleLikeStatus(evt) {
     evt.target.classList.toggle("card__like-dark");
@@ -50,9 +51,7 @@ likeButtons.forEach(function(likeButton) {
 });
 trashButtons.forEach(function(trashButton){
     trashButton.addEventListener("click", deleteCard);
-});
-   // HOLA SERGIO. BUENOS DIAS, DISCULPA PERO CREO QUE TODAVIA NO VIMOS COMO INSERTAR TEMPLATES.. NO SE COMO REALIZARLO. SOLO EXPLICARON COMO INSERTAR
-   // HTML CON EL INNERHTML O INSERTADJACENTHTML
+});       
 function addCard(evt){ 
     evt.preventDefault();
     containerCards.insertAdjacentHTML("beforeend",  `<div class="card">
@@ -65,10 +64,9 @@ function addCard(evt){
      newCard = containerCards.lastElementChild;
     const trashButton = newCard.querySelector(".card__trash-image");
     trashButton.addEventListener("click", deleteCard);
-
-    const likeButtons = newCard.querySelector(".card__like");
+    let likeButtons = newCard.querySelector(".card__like");
     likeButtons = newCard.addEventListener("click", toggleLikeStatus);
-    closePopup();
+    closePopup(containerPopupCard);
     };
 imageCardContent.value = "";
 titleCardContent.value = "";
