@@ -25,28 +25,21 @@ const controlButtonCard = document.querySelector(".control__button-card");
 
 
 
-function deleteCard(evt){
-    evt.target.closest(".card").remove();
+function openPopup(elementPopup){
+    elementPopup.classList.add("popup__opened");
 }
 
-function openPopup(){
-    popup.classList.add("popup__opened");  
-};
-function closePopup(){
-    popup.classList.remove("popup__opened");
-    
-};
-function deletePopupCard(){
-    containerPopupCard.classList.remove("popup__opened");
+function closePopup(elementPopup){
+    elementPopup.classList.remove("popup__opened");
 }
-function openPopupCard(){
-    containerPopupCard.classList.add("popup__opened");  
+
+function deleteCard(evt){
+    evt.target.closest(".card").remove();
 }
 function submitButtonFunction(evt){
     evt.preventDefault();
     titleProfile.textContent = nameInput.value;
     subtitleProfile.textContent = jobInput.value;
-    closePopup();
 }
 function toggleLikeStatus(evt) {
     evt.target.classList.toggle("card__like-dark");
@@ -58,32 +51,33 @@ likeButtons.forEach(function(likeButton) {
 trashButtons.forEach(function(trashButton){
     trashButton.addEventListener("click", deleteCard);
 });
-
-function addCard(evt){
+   // HOLA SERGIO. BUENOS DIAS, DISCULPA PERO CREO QUE TODAVIA NO VIMOS COMO INSERTAR TEMPLATES.. NO SE COMO REALIZARLO. SOLO EXPLICARON COMO INSERTAR
+   // HTML CON EL INNERHTML O INSERTADJACENTHTML
+function addCard(evt){ 
     evt.preventDefault();
     containerCards.insertAdjacentHTML("beforeend",  `<div class="card">
     <img class="card__image" src="${imageCardInput.value}" alt="Valle de Yosemite">
-    <img class="card__trash-image" src="images/Trash.png" alt="Imagen tacho de basura">
+    <img class="card__trash-image"yy src="images/Trash.png" alt="Imagen tacho de basura">
     <div class="card__info">
     <h3 class="card__text">${nameCardInput.value}</h3>
     <div class="card__like"></div>
     </div></div>`)
-    let newCard = containerCards.lastElementChild;
-    let trashButton = newCard.querySelector(".card__trash-image");
+     newCard = containerCards.lastElementChild;
+    const trashButton = newCard.querySelector(".card__trash-image");
     trashButton.addEventListener("click", deleteCard);
 
-    let likeButtons = newCard.querySelector(".card__like");
+    const likeButtons = newCard.querySelector(".card__like");
     likeButtons = newCard.addEventListener("click", toggleLikeStatus);
-    deletePopupCard();
-    }
+    closePopup();
+    };
 imageCardContent.value = "";
 titleCardContent.value = "";
 
 
 controlButtonCard.addEventListener("click", addCard);
 containerPopup.addEventListener("submit", submitButtonFunction);
-openProfileButton.addEventListener("click", openPopup);
-closeProfileButton.addEventListener("click", closePopup);
-openCardPopup.addEventListener("click", openPopupCard);
-closePopupCard.addEventListener("click", deletePopupCard);
+closeProfileButton.addEventListener("click", function () {closePopup(popup)});
+openProfileButton.addEventListener("click", function () {openPopup(popup)});
+openCardPopup.addEventListener("click", function () {openPopup(containerPopupCard)});
+closePopupCard.addEventListener("click", function (){closePopup(containerPopupCard)});
 
