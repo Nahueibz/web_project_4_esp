@@ -7,7 +7,6 @@ const jobInput = document.querySelector(".control__form1");
 const titleProfile = document.querySelector(".profile__title");
 const subtitleProfile = document.querySelector(".profile__subtitle");
 
-
 const containerPopupCard = document.querySelector(".popup__addcard");
 const closePopupCard = document.querySelector(".popup__image1");
 const openCardPopup = document.querySelector(".profile__bottom-add");
@@ -15,14 +14,12 @@ const cardsContent = document.querySelector(".card");
 const trashButtons = document.querySelectorAll(".card__trash-image");
 const likeButtons = document.querySelectorAll(".card__like");
 
-
 const containerCards = document.querySelector(".cards");
 const imageCardContent = document.querySelector(".card__image");
 const titleCardContent = document.querySelector(".card__text");
 const nameCardInput = document.querySelector(".control__form-card");
 const imageCardInput = document.querySelector(".control__form-card1");
 const controlButtonCard = document.querySelector(".control__button-card");
-
 
 
 function openPopup(elementPopup){
@@ -51,25 +48,32 @@ likeButtons.forEach(function(likeButton) {
 });
 trashButtons.forEach(function(trashButton){
     trashButton.addEventListener("click", deleteCard);
-});       
-function addCard(evt){ 
+});   
+
+function addCard(evt) {
     evt.preventDefault();
-    containerCards.insertAdjacentHTML("beforeend",  `<div class="card">
-    <img class="card__image" src="${imageCardInput.value}" alt="Valle de Yosemite">
-    <img class="card__trash-image"yy src="images/Trash.png" alt="Imagen tacho de basura">
-    <div class="card__info">
-    <h3 class="card__text">${nameCardInput.value}</h3>
-    <div class="card__like"></div>
-    </div></div>`)
-     newCard = containerCards.lastElementChild;
+    const cardTemplate = document.querySelector("#card-template");
+    const newCard = document.importNode(cardTemplate.content, true);
+    const cardImage = newCard.querySelector(".card__image");
+    const cardText = newCard.querySelector(".card__text");
+  
+    cardImage.src = imageCardInput.value;
+    cardText.textContent = nameCardInput.value;
+  
     const trashButton = newCard.querySelector(".card__trash-image");
     trashButton.addEventListener("click", deleteCard);
-    let likeButtons = newCard.querySelector(".card__like");
-    likeButtons = newCard.addEventListener("click", toggleLikeStatus);
+  
+    const likeButton = newCard.querySelector(".card__like");
+    likeButton.addEventListener("click", toggleLikeStatus);
+    containerCards.appendChild(newCard);
+
     closePopup(containerPopupCard);
-    };
-imageCardContent.value = "";
-titleCardContent.value = "";
+    imageCardInput.value = "";
+    nameCardInput.value = "";
+  }
+  
+  controlButtonCard.addEventListener("click", addCard);
+  
 
 
 controlButtonCard.addEventListener("click", addCard);
