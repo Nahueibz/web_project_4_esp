@@ -7,13 +7,18 @@
 .card{
     width: 280px;
     height: 360px;
-    background-color: white;
     display: grid;
+    background-color: white;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr;
     border-color: black;
-    border-radius: 20px;
+    border-radius: 11px;
     position:   relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
+
 }
 .card__image{
     width: 280px;

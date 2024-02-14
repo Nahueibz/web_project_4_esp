@@ -21,6 +21,58 @@ const nameCardInput = document.querySelector(".control__form-card");
 const imageCardInput = document.querySelector(".control__form-card1");
 const controlButtonCard = document.querySelector(".control__button-card");
 
+const initialCards = [
+    {
+      name: "Valle de Yosemite",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    },
+    {
+      name: "Lago Louise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    },
+    {
+      name: "Montañas Calvas",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    },
+    {
+      name: "Parque Nacional de la Vanoise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    }
+  ];
+
+  function generateCard (name, link) {
+    const cardTemplate = document.querySelector("#card-template");
+    const card = document.importNode(cardTemplate.content, true);
+    const cardImage = card.querySelector(".card__image");
+    cardImage.addEventListener("click", showImage);
+    const cardText = card.querySelector(".card__text");
+    const trashButton = card.querySelector(".card__trash-image");
+    trashButton.addEventListener("click", deleteCard);
+    const likeButton = card.querySelector(".card__like");
+    likeButton.addEventListener("click", toggleLikeStatus);
+  
+
+    cardImage.src = link;
+    cardText.textContent = name;
+    return card;
+  }
+
+  initialCards.forEach(function (element) {
+   const cardNew = generateCard(element.name, element.link);
+   containerCards.append(cardNew);
+  })
+
+function showImage(){
+  containerPopup.classList.add(".popup__opened");
+}  
 
 function openPopup(elementPopup){
     elementPopup.classList.add("popup__opened");
@@ -43,13 +95,6 @@ function toggleLikeStatus(evt) {
     evt.target.classList.toggle("card__like-dark");
 }
 
-likeButtons.forEach(function(likeButton) {
-    likeButton.addEventListener("click", toggleLikeStatus);
-});
-trashButtons.forEach(function(trashButton){
-    trashButton.addEventListener("click", deleteCard);
-});   
-
 function addCard(evt) {
     evt.preventDefault();
     const cardTemplate = document.querySelector("#card-template");
@@ -65,17 +110,14 @@ function addCard(evt) {
   
     const likeButton = newCard.querySelector(".card__like");
     likeButton.addEventListener("click", toggleLikeStatus);
-    containerCards.appendChild(newCard);
+    containerCards.prepend(newCard);
 
     closePopup(containerPopupCard);
     imageCardInput.value = "";
     nameCardInput.value = "";
   }
   
-  controlButtonCard.addEventListener("click", addCard);
-  
-
-
+controlButtonCard.addEventListener("click", addCard);
 controlButtonCard.addEventListener("click", addCard);
 containerPopup.addEventListener("submit", submitButtonFunction);
 closeProfileButton.addEventListener("click", function () {closePopup(popup)});
