@@ -16,10 +16,8 @@
     position:   relative;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
-    
-
-}
+    overflow: hidden; 
+}   
 .card__image{
     width: 280px;
     height: 280px;
@@ -60,8 +58,57 @@
 }
 .card__trash-image{
     position: absolute;
-    right: 0; 
     top: 0;
+    right: 0;
     padding: 19px;
 }
+.popup1{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+} 
 
+.popup__image-card{
+    width: 60vw;
+    height: 60vh;
+}
+.popup__text{
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    color: white;
+}
+.popup__close-card{
+    position: absolute;
+    right: 250px;
+    top: 70px;
+
+}
+@media screen and (max-width:380px){
+    .cards{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+
+    }
+    .card{
+        width: 320px;
+}
+    .card__image {
+ width: 100%;
+ 
+}
+.popup__close-card{
+    right: 40px;
+}
+}

@@ -1,3 +1,4 @@
+@import url(../vendor/normalize.css);
 @import url(../blocks/header.css);
 @import url(../blocks/cards.css);
 @import url(../blocks/profile.css);
@@ -11,3 +12,9 @@ body{
     padding-left: 200px;
     padding-right: 200px;
 }
+@media screen and (max-width:380px){
+    body{
+       padding-left: 31px;
+       padding-right: 37px;
+    }
+     }

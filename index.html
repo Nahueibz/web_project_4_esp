@@ -9,42 +9,47 @@
   <body>
     <section class="popup">
       <form class="popup__container">
-        <img class="popup__image" src="images/CloseIcon.png" alt="Imagen cruz para cerrar ventana">
+        <img class="popup__image-close" src="images/CloseIcon.png" alt="Imagen cruz para cerrar ventana">
         <h3 class="popup__title">Editar Perfil</h3>
-        <input class="control__form" type="text" name="name" placeholder="Nombre">
-        <input class="control__form1" type="text" name="job" placeholder="Acerca de mi">
-        <input class="control__button" type="submit" value="Crear">
+        <input class="popup__input-form" type="text" name="name" placeholder="Nombre" required="" minlength="1">
+        <input class="popup__input-form1" type="text" name="job" placeholder="Acerca de mi" required="" minlength="1">
+        <input class="popup__input-submit" type="submit" value="Crear"> 
       </form>
     </section>
-    <section class="popup__addcard">
-      <form class="popup__container-addcard">
-        <img class="popup__image1" src="images/CloseIcon.png" alt="Imagen cruz para cerrar ventana">
-        <h3 class="popup__title">Nuevo lugar</h3>
-        <input class="control__form-card" type="text" name="Nombre" placeholder="Titulo">
-        <input class="control__form-card1" type="text" name="Acerca de mi" placeholder="Enlace a la imagen" >
-        <input class="control__button-card" type="submit" value="Crear" >
+    <section class="newcard">
+      <form class="newcard__container">
+        <img class="newcard__close-icon" src="images/CloseIcon.png" alt="Imagen cruz para cerrar ventana">
+        <h3 class="newcard__title">Nuevo lugar</h3>
+        <input class="newcard__input-title" type="text" name="Nombre" placeholder="Titulo" required="" minlength="">
+        <input class="newcard__input-src" type="text" name="Acerca de mi" placeholder="Enlace a la imagen" required="" minlength="2">
+        <input class="newcard__control-button-card" type="submit" value="Crear" required="" minlength="1">
       </form>
     </section>
     <header class="header">
       <img class="logo" src="images/logo.png" alt="Logo Around">
       <img class="header__line-img" src="images/Line.jpg" alt="Imagen de linea">
     </header>
-    <section class="profile__content">
+    <section class="profile">
       <img class="profile__image" src="images/imagenjacques.jpg" alt="Imagen de Jacques Cousteau">
       <div class="profile__info">
         <h1 class="profile__title">Jacques Cousteau</h1>
         <h3 class="profile__subtitle">Explorador</h3>
-        <div class="image__control">
-          <img class="profile__bottom" src="images/editbutton.png" alt="Boton de editar Tarjeta">
+        <div class="profile__image-control">
+          <img class="profile__ctrl-bottom" src="images/editbutton.png" alt="Boton de editar Tarjeta">
         </div>
       </div>
       <img class="profile__bottom-add" src="images/AddButton.png" alt="Boton Agregar Tarjeta">        
     </section>
     <section class="cards">
     </section>
+    <div class="popup popup1" id="popup__image">
+      <img class="popup__close-card" src="images/CloseIcon.png" alt="Imagen cruz para cerrar ventana">
+      <img class="popup__image-card" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="">
+      <h3 class="popup__text">Montañas Calvas</h3>
+    </div>
     <template id="card-template">
       <div class="card">
-        <img class="card__image" src="" alt="Valle de Yosemite">
+        <img class="card__image" src="images/AddButton.png" alt="Valle de Yosemite">
         <img class="card__trash-image" src="images/Trash.png" alt="Imagen tacho de basura">
         <div class="card__info">
           <h3 class="card__text"></h3>

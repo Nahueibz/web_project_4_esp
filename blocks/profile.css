@@ -1,4 +1,4 @@
-.profile__content{
+.profile{
   display: grid;
   grid-template-columns: 168px 2fr 150px;
   padding-top: 20px;
@@ -9,21 +9,19 @@
 }
 .profile__image{
     border-radius: 50%;
+    width: 168px;
 }
 .profile__info{
     display: flex;
     flex-direction: column;
     width: 85%;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 30px; 
 }
 .profile__bottom{
     width: 24px;
     height: 24px;
     align-self: flex-end;
-}
-.profile__image{
-    width: 168px;
 }
 .profile__title{
     font-family: Inter, 'Arial Narrow Bold', sans-serif;
@@ -42,15 +40,46 @@
     font-size: 18px;
     margin: 0;
 }
-.image__control{
+.profile__image-control{
     display: flex;
     flex-direction: column;
-    width: 24px; 
     height: 24px;
+    width: 24px;
     align-self: flex-end;
     position: absolute;
     top: 93px;
 }
 .profile__bottom-add{
     align-self: center;
+}
+@media screen and (max-width:380px){
+ .profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+ .profile__image{
+    width: 250px;
+ }
+ .profile__bottom-add{
+    width: 70%;
+    height: 80px;
+ }
+ .profile__title{
+    text-align: center;
+ }
+ .profile__subtitle{
+    text-align: center;
+ }
+ .profile__info{
+    padding-top: 1px;
+ }
+ .profile__ctrl-bottom{
+    position: absolute;
+    right: -39px;
+    width: 35px;
+    bottom: 50px;
+
+ }
 }

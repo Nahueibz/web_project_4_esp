@@ -1,5 +1,4 @@
 .popup{
-    width: 100%;
     z-index: 0;
     display: none;
 }
@@ -34,15 +33,15 @@
     align-self: flex-start;
     padding-left: 36px;
 }
-.control__form{
+.popup__input-form{
     width: 78%;
     padding: 10px;
 }
-.control__form1{
+.popup__input-form1{
     width: 78%;
     padding: 10px;
 }
-.control__button{
+.popup__input-submit{
     width: 85%;
     padding: 15px;
     background-color: black;
@@ -51,8 +50,24 @@
     font-family: inter, Arial, Helvetica, sans-serif;
     font-weight: 400;
 }
-.popup__image{
+.popup__image-close{
     position: absolute;
     right: -33px;
     top: -35px;
 }
+@media screen and (max-width:380px){
+    .popup__image-card{
+    width: 90vw;    
+    }
+    .popup__container{
+        width: 340px;
+        height: 300px;
+        margin-left: 14px;
+        margin-top: 150px;
+    }
+    .popup__image-close{
+        position: absolute;
+        right: 24px;
+        top: -51px;
+    }
+     }

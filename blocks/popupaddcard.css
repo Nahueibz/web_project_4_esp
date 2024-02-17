@@ -1,4 +1,4 @@
-.popup__addcard{
+.newcard{
     width: 100%;
     z-index: 0;
     display: none;
@@ -6,7 +6,7 @@
 .popup__opened{
     display: block;
 }
-.popup__container-addcard{
+.newcard__container{
     width: 430px;
     height: 330px;
     background-color: white;
@@ -24,7 +24,7 @@
     margin-left: 425px;
     margin-top: 195px;
 }
-.popup__title{
+.newcard__title{
     font-family: Inter, sans-serif, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 900;
@@ -34,15 +34,15 @@
     align-self: flex-start;
     padding-left: 36px;
 }
-.control__form-card{
+.newcard__input-title{
     width: 78%;
     padding: 10px;
 }
-.control__form-card1{
+.newcard__input-src{
     width: 78%;
     padding: 10px;
 }
-.control__button-card{
+.newcard__control-button-card{
     width: 85%;
     padding: 15px;
     background-color: black;
@@ -51,8 +51,21 @@
     font-family: inter, Arial, Helvetica, sans-serif;
     font-weight: 400;
 }
-.popup__image1{
+.newcard__close-icon{
     position: absolute;
     right: -33px;
     top: -35px;
 }
+@media screen and (max-width:380px){
+    .newcard__container{
+        width: 340px;
+        height: 300px;
+        margin-left: 14px;
+        margin-top: 150px;
+    }
+    .newcard__close-icon{
+        position: absolute;
+        right: 14px;
+        top: -47px;
+    }
+     }
